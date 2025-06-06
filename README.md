@@ -1,2 +1,4 @@
 # random-number-EvenOrOdd
-check random number is Even Or Odd. Built using 2 microservices
+Application is Built using 2 microservices.
+First app generates random number.
+Second app fetch that random number and checks if it's Even Or Odd and prime or not.
