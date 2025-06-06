@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: integration-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: integration-app
+  template:
+    metadata:
+      labels:
+        app: integration-app
+    spec:
+      containers:
+      - name: integration-app
+        image: welkinoid/client-service:latest
+        ports:
+        - containerPort: 4000

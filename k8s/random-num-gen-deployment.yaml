@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-num-gen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random-num-gen
+  template:
+    metadata:
+      labels:
+        app: random-num-gen
+    spec:
+      containers:
+      - name: random-num-gen
+        image: welkinoid/index:latest
+        ports:
+        - containerPort: 3000
