@@ -1,0 +1,39 @@
+name: Deploy to EKS
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Docker image version (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Update kubeconfig
+      run: aws eks update-kubeconfig --name demo-cluster --region us-east-1
+
+    - name: Patch random-num-gen image
+      run: |
+        sed -i "s|welkinoid/index:.*|welkinoid/index:${{ github.event.inputs.version }}|g" k8s/random-num-gen-deployment.yaml
+
+    - name: Patch integration-app image
+      run: |
+        sed -i "s|welkinoid/client-service:.*|welkinoid/client-service:${{ github.event.inputs.version }}|g" k8s/integration-app-deployment.yaml
+
+    - name: Apply Kubernetes manifests
+      run: |
+        kubectl apply -f k8s/
