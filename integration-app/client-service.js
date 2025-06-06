@@ -12,16 +12,16 @@ function isPrime(num) {
   return true;
 }
 
-app.get('/get-number', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
-    const response = await fetch('http://random-num-gen:3000/')
-;
-    
-    
+    // Use axios to fetch the number (since you imported axios)
+    const response = await axios.get('http://random-num-gen:3000/');
+
+    // response.data is the response body string
     const numberMatch = response.data.match(/\d+/);
 
     if (!numberMatch) {
-      return res.status(500).send('<h1>Error extracting number from service1 response</h1>');
+      return res.status(500).send('<h1>Error extracting number from random-num-gen response</h1>');
     }
 
     const number = parseInt(numberMatch[0]);
@@ -59,7 +59,7 @@ app.get('/get-number', async (req, res) => {
             <p><strong>Random Number:</strong> ${number}</p>
             <p><strong>Type:</strong> ${isEven ? 'Even' : 'Odd'}</p>
             <p><strong>Prime:</strong> ${prime ? 'Yes' : 'No'}</p>
-            <form method="GET" action="/get-number">
+            <form method="GET" action="/">
               <button type="submit">Get New Number</button>
             </form>
             <p style="font-size: 14px; color: #777;">(Auto-refreshes every 10 seconds)</p>
@@ -71,8 +71,8 @@ app.get('/get-number', async (req, res) => {
     res.send(htmlResponse);
 
   } catch (error) {
-    console.error('Error calling index:', error.message);
-    res.status(500).send('<h1>Failed to fetch from index</h1>');
+    console.error('Error calling random-num-gen:', error.message);
+    res.status(500).send('<h1>Failed to fetch from random-num-gen service</h1>');
   }
 });
 
