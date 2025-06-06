@@ -14,8 +14,9 @@ function isPrime(num) {
 
 app.get('/get-number', async (req, res) => {
   try {
-    const response = await axios.get('http://index:3000/');
-
+    const response = await fetch('http://random-num-gen:3000/')
+;
+    
     
     const numberMatch = response.data.match(/\d+/);
 
