@@ -44,7 +44,7 @@ app.get('/', async (req, res) => {
               font-size: 16px;
               border: none;
               border-radius: 6px;
-              background-color: #007BFF;
+              background-color:rgb(0, 255, 136);
               color: white;
               cursor: pointer;
             }
