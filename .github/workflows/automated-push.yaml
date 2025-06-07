@@ -43,8 +43,8 @@ jobs:
 
     - name: Update Kubernetes manifests with new image tags
       run: |
-        sed -i "s|welkinoid/index:.*|welkinoid/index:${VERSION}|" ./k8s/random-deploy.yaml
-        sed -i "s|welkinoid/client-service:.*|welkinoid/client-service:${VERSION}|" ./k8s/integration-deploy.yaml
+        sed -i "s|welkinoid/index:.*|welkinoid/index:${VERSION}|" ./k8s/random-num-gen-deployment.yaml
+        sed -i "s|welkinoid/client-service:.*|welkinoid/client-service:${VERSION}|" ./k8s/integration-app-deployment.yaml
 
     - name: Commit and push updated manifests
       run: |
