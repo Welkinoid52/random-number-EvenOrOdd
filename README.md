@@ -8,3 +8,9 @@ TO RUN WORKFLOW
 FIRST RUN CI PIPELINE- it will ask for  input parameter (type version for docker image)
 FOR CD PIPELINE - input same input parameters that will update manifest's docker images tag.
 later ArgoCD can be added for continious monitoring, Prometheus + Grafana for monitoring.
+
+![Alt text](images/Screenshot 2025-06-07 130849.png)
+![Alt text](images/example.png)
+![Alt text](images/example.png)
+![Alt text](images/example.png)
+![Alt text](images/example.png)
