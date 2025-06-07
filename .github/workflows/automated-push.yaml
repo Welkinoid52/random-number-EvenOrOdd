@@ -3,7 +3,8 @@ name: CI/CD - Build, Push & Auto Deploy
 on:
   push:
     branches:
-      - main  # Triggers on push to main branch
+      - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -33,7 +34,7 @@ jobs:
         tags: |
           welkinoid/index:${{ env.VERSION }}
 
-    - name: Build & push clientService
+    - name: Build & push client service
       uses: docker/build-push-action@v5
       with:
         context: ./integration-app
@@ -47,9 +48,12 @@ jobs:
         sed -i "s|welkinoid/client-service:.*|welkinoid/client-service:${VERSION}|" ./k8s/integration-app-deployment.yaml
 
     - name: Commit and push updated manifests
+      env:
+        GH_TOKEN: ${{ secrets.GH_PAT }}
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
+        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
         git add ./k8s/*.yaml
         git commit -m "CI: update image tags to ${VERSION}" || echo "No changes to commit"
-        git push
+        git push origin HEAD:${{ github.ref_name }}
