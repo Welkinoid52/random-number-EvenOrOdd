@@ -1,4 +1,4 @@
-name: Build and Push Microservices
+name: CI- Build and Push Microservices
 
 on:
   workflow_dispatch:
