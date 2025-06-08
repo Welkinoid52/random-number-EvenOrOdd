@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: random-num-gen
-        image: welkinoid/index:v1-10
+        image: welkinoid/index:v1-11
         ports:
         - containerPort: 3000
