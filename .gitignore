@@ -2,3 +2,7 @@ integration-app/node_modules
 #integration-app/package-lock.json
 random-num-gen-service/node_modules
 #random-num-gen-service/package-lock.json
+eks-tf/.terraform
+eks-tf/.terraform.lock.hcl
+eks-tf/terraform.tfstate
+eks-tf/terraform.tfstate.backup

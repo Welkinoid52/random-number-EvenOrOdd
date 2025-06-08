@@ -5,7 +5,6 @@ metadata:
 spec:
   selector:
     app: integration-app
-  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
