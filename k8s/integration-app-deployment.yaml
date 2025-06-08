@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: integration-app
-        image: welkinoid/client-service:v1-13
+        image: welkinoid/client-service:v1-14
         ports:
         - containerPort: 4000
