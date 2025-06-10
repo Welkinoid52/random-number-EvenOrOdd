@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
           <title>Number Info</title>
           <meta http-equiv="refresh" content="10"> <!-- Auto-refresh every 10 seconds -->
           <style>
-            body { font-family: Arial, sans-serif; padding: 20px; background:rgb(186, 193, 52); }
+            body { font-family: Arial, sans-serif; padding: 20px; background:rgb(78, 52, 193); }
             .box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
             h1 { color: #333; }
             p { font-size: 18px; }
