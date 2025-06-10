@@ -4,6 +4,7 @@ metadata:
   name: integration-app-service
   namespace: default
 spec:
+  type: LoadBalancer 
   selector:
     app: integration-app
   ports:

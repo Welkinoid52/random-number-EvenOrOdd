@@ -4,21 +4,21 @@ set -euo pipefail
 
 ARGO_NS=argocd
 MON_NS=monitoring
-INGRESS_NS=ingress-nginx
+# INGRESS_NS=ingress-nginx
 
-echo "🔥Installing Ingress-nginx controller..."
+# echo "🔥Installing Ingress-nginx controller..."
 
-# Create namespace
-kubectl create namespace $INGRESS_NS || true
+# # Create namespace
+# kubectl create namespace $INGRESS_NS || true
 
-# Add Helm repo
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
+# # Add Helm repo
+# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+# helm repo update
 
-# Install ingress-nginx
-helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
-  --namespace $INGRESS_NS \
-  --set controller.service.type=LoadBalancer
+# # Install ingress-nginx
+# helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
+#   --namespace $INGRESS_NS \
+#   --set controller.service.type=LoadBalancer
 
 
 
